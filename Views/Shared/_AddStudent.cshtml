@@ -1,0 +1,27 @@
+﻿@model StudentManagement.Models.StudentDataModel
+@{
+    ViewBag.Title = "ADD student";
+}
+
+<h3 id="addHeading">Add Student</h3>
+
+@using (Html.BeginForm("AddStudent", "Student", FormMethod.Post , new { Id="AddForm"}))
+{
+    @*@Html.AntiForgeryToken()
+    @Html.ValidationSummary()*@
+    <span class="addFormLabel"> @Html.HiddenFor(student => Model.StudentId, new { Id = "StdId" }) </span>
+
+    <span class="addFormLabel">Student Name : </span> @Html.TextBoxFor(student => Model.StudentName, new { placeholder="Your Name", Id = "StdName" })
+    @*@Html.ValidationMessageFor(student => Model.StudentName)*@
+    <br />
+    <br />
+    <span class="addFormLabel">Student Age: </span> @Html.TextBoxFor(student => Model.StudentAge, new { placeholder = "Your Age", Id = "StdAge" })
+    @*@Html.ValidationMessageFor(student => Model.StudentAge)*@
+    <br />
+    <br />
+    <span class="addFormLabel">Student Subject : </span> @Html.DropDownListFor(student => Model.StudentSubject, ViewBag.List as List<SelectListItem>, new { Id = "StudentSubject" })
+    @*@Html.ValidationMessageFor(student => Model.StudentSubject)*@
+    <br />
+    <br />
+    <button type="button" class="btn btn-dark Add-Updatebtn" id="AddButton" onclick="refreshAdd()">Add</button>
+}

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<StudentManagement.Models.StudentDataModel>
+
+<div id="tableWrapper">
+    <table class="table" id="displayTable">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.StudentName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StudentAge)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StudentSubject)
+                </th>
+                <th>
+                    Action
+                </th>
+
+            </tr>
+        </thead>
+
+        @*@foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentSubject)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentAge)
+                    </td>
+                    <td>
+
+                        <button type="button" class="Update-btn " name="id" onclick="UpdateStudent(@item.StudentId,`@item.StudentName`,@item.StudentAge,`@item.StudentSubject`)">Update</button> |
+                        <button type="button" class="Remove-btn" onclick="refreshList(@item.StudentId)">Remove</button>
+                    </td>
+                </tr>
+            }*@
+
+    </table>
+</div>
+<script src="~/Scripts/customJs.js"></script>

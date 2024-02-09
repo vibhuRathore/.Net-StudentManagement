@@ -1,0 +1,25 @@
+﻿@model IEnumerable<StudentManagement.Models.StudentDataModel>
+
+<div>
+    @{ Html.RenderPartial("_NavBar"); }
+</div>
+<div class="addPartial">
+    @{ Html.RenderPartial("_AddStudent", new StudentManagement.Models.StudentDataModel());}
+</div>
+
+
+<br />
+<br />
+
+<div class="listpartial">
+    <h3 id="listPartialHeading">Details Of Current Students:-</h3>
+    @{ Html.RenderPartial("_listOfStudents", Model);}
+</div>
+
+<br />
+
+<div>
+    @{ Html.RenderPartial("_Footer"); }
+</div>
+
+@*@Scripts.Render("~/scripts/customjs.js")*@
