@@ -24,9 +24,16 @@ namespace StudentManagement.Controllers
  
         public ActionResult Index()
         {
-            var model = _studentRepository.GetStudents();
-            ViewBag.list = _studentRepository.Subjectlist();
-            return View(model);
+            if (User.Identity.IsAuthenticated)
+            {
+                var model = _studentRepository.GetStudents();
+                ViewBag.list = _studentRepository.Subjectlist();
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
         [HttpGet]
         public ActionResult ListOfStudents()

@@ -1,29 +1,30 @@
-﻿let signup = document.querySelector(".signup");
-let login = document.querySelector(".login");
-let slider = document.querySelector(".slider");
-let formSection = document.querySelector(".form-section");
-
-function ShowLogin() {
-    if ($(slider).hasClass("moveslider")) {
-        slider.classList.remove("moveslider");
-        formSection.classList.remove("form-section-move");
-    }
-}
-signup.addEventListener("click", () => {
-    slider.classList.add("moveslider");
-    formSection.classList.add("form-section-move");
-});
-function ShowSignUp() {
+﻿
+function afterHomeSignUp() {
     debugger
     $.ajax({
-        url: '/Account/SignUp',
-        type: "get",
-        success: function () {
-            debugger
-      
+        type: "GET",
+        datatype: "html",
+        success: function (result) {
+            window.location.href = '/Account/SignUp'
         },
+        error: function (error) {
+            console.error("Error:", error);
+        }
     });
 }
-function addClassToSlider() {
-   
+
+function afterHomeLogin() {
+    debugger
+    $.ajax({
+        type: "GET",
+        url: "../Account/Login",
+        datatype: "html",
+        success: function (result) {
+            window.location.href = '/Account/Login'
+        },
+        error: function (error) {
+            console.error("Error:", error);
+        }
+    });
 }
+

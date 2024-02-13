@@ -1,33 +1,43 @@
-﻿let signup = document.querySelector(".signup");
-let login = document.querySelector(".login");
-let slider = document.querySelector(".slider");
-let formSection = document.querySelector(".form-section");
+﻿function SubmitDataToPostSignUp() {
+    debugger
+    var receivedUserData = {
+        Name: $("#signUpName").val(),
+        Email: $("#signUpEmail").val(),
+        Password: $("#signUpPassword").val(),
+        ConfirmPassword: $("#signUpConfirmPassword").val()
+    };
+    debugger
+    $.ajax({
+        url: '/Account/SignUp',
+        type: "post",
+        data: ({ receivedUserData: receivedUserData }),
+        success: function (response) {
+            console.log("Success", response);
+        },
+        error: function (error) {
+            console.error("Error:", error);
+        }
+    });
 
-signup.addEventListener("click", () => {
-	slider.classList.add("moveslider");
-	formSection.classList.add("form-section-move");
-});
+}
 
-login.addEventListener("click", () => {
-	slider.classList.remove("moveslider");
-	formSection.classList.remove("form-section-move");
-});
-
-$("loginBtn").click(function () {
-	debugger
-	$.ajax({
-		url: "/Student/Index",
-		type: "get",
-		success: {
-			
-		}
-	});
-});
-
-$("#signUpBtn").click(function () {
-	debugger
-	$.ajax({
-		url: "/Account/SignUp",
-		type: "post"
-	});
-});
+function SubmitDataToPostLogin()
+{
+    debugger
+    var receivedUserData = {
+        Email: $("#loginEmail").val(),
+        Password: $("#loginPassword").val()
+    };
+    debugger
+    $.ajax({
+        url: '/Account/Login',
+        type: "post",
+        data: ({ receivedUserData: receivedUserData }),
+        success: function (response) {
+            console.log("Success", response);
+        },
+        error: function (error) {
+            console.error("Error:", error);
+        }
+    });
+}

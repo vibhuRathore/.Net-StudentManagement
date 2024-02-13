@@ -1,0 +1,40 @@
+﻿@model StudentManagement.Models.LoginViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>login</title>
+    <link href="~/assets/css/loginPage.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <br />
+        <h1 class="heading">StudentManagement</h1>
+        <h3 class="title"> Login Form</h3>
+    </header>
+    <div class="container">
+        <div class="form-section">
+            @using (Html.BeginForm("login", "Account", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div class="login-box">
+                    <h3 class="heading subHeadlogin">Login</h3>
+                    @Html.TextBoxFor(SignUp => Model.UserName, new { placeholder = "Your Username", @id = "loginUserName", @class = "email ele" })
+                    @Html.PasswordFor(SignUp => Model.Password, new { placeholder = "password", @id = "loginPassword", @class = "password ele" })
+                <div>
+                    @Html.LabelFor(SignUp => Model.RememberMe, new { @id = "LoginRemberLabel" })
+                    @Html.CheckBoxFor(SignUp => Model.RememberMe, new { @id = "LoginRemberCheckbox" })
+                </div>
+                    <button class="clkbtn" onclick="SubmitDataToPostLogin()">Login</button>
+                </div>
+            }
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="~/assets/JS/loginPage.js"></script>
+</body>
+</html>

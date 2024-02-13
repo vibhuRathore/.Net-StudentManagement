@@ -1,0 +1,48 @@
+﻿@model StudentManagement.Models.RegisterViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0">
+    <title>SignUp</title>
+    <link href="~/assets/css/loginPage.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <br />
+        <h1 class="heading">StudentManagement</h1>
+        <h3 class="title">SignUp Form</h3>
+    </header>
+
+    <!-- container div -->
+    <div class="container">
+        <div class="form-section">
+
+            @using (Html.BeginForm("SignUp", "Account", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div class="signup-box">
+                    <h3 class="heading subHeadlogin">SignUp</h3>
+                    @Html.TextBoxFor(SignUp => Model.Name, new { placeholder = "Your Name", @id = "signUpName", @class = "name ele" })
+                    @*@Html.ValidationMessageFor(student => Model.StudentName)*@
+
+                    @Html.TextBoxFor(SignUp => Model.Email, new { placeholder = "youremail@email.com", @id = "signUpEmail", @class = "email ele" })
+
+                    @Html.PasswordFor(SignUp => Model.Password, new { placeholder = "password", @id = "signUpPassword", @class = "password ele" })
+
+                    @Html.PasswordFor(SignUp => Model.ConfirmPassword, new { placeholder = "Confirm password", @id = "signUpConfirmPassword", @class = "password ele" })
+                    <button class="clkbtn" onclick="SubmitDataToPostSignUp()">SignUp</button>
+                </div>
+            }
+
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="~/assets/JS/loginPage.js"></script>
+</body>
+</html>

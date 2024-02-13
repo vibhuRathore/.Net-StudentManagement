@@ -8,11 +8,11 @@
 }
 
 body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        gap: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
     background-color: rgb(231, 231, 231);
 }
 
@@ -29,18 +29,25 @@ header {
     color: green;
 }
 
+.subHeadlogin {
+    font-size: 1.5rem;
+}
+
+#login-form {
+}
+
 .title {
     font-weight: 400;
     letter-spacing: 1.5px;
 }
 
 .container {
-    height: 600px;
-    width: 500px;
+    height: 90%;
     background-color: white;
     box-shadow: 8px 8px 20px rgb(128, 128, 128);
     position: relative;
     overflow: hidden;
+    align-content:center;
 }
 
 .btn {
@@ -64,7 +71,7 @@ header {
     cursor: pointer;
 }
 
-.slider {
+/*.slider {
     height: 60px;
     width: 150px;
     border-radius: 50px;
@@ -73,24 +80,17 @@ header {
     top: 20px;
     left: 100px;
     transition: all 0.5s ease-in-out;
-}
+}*/
 
-.moveslider {
-    left: 250px;
-}
+
 
 .form-section {
     height: 500px;
-    width: 1000px;
     padding: 20px 0;
     display: flex;
     position: relative;
     transition: all 0.5s ease-in-out;
     left: 0px;
-}
-
-.form-section-move {
-    left: -500px;
 }
 
 .login-box,
@@ -122,6 +122,12 @@ header {
     border-radius: 50px;
     padding-left: 30px;
     font-size: 18px;
+}
+#LoginRemberLabel{
+    font-size:17px;
+}
+#LoginRemberCheckbox{
+    margin-left:2px;
 }
 
 .clkbtn {
@@ -163,17 +169,9 @@ header {
         left: 50px;
     }
 
-    .moveslider {
-        left: 150px;
-    }
-
     .form-section {
         height: 500px;
         width: 600px;
-    }
-
-    .form-section-move {
-        left: -300px;
     }
 
     .login-box,

@@ -55,7 +55,7 @@ namespace StudentManagement.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return View();
+            return View("login");
         }
 
         //
@@ -63,7 +63,7 @@ namespace StudentManagement.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task< ActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
@@ -72,11 +72,11 @@ namespace StudentManagement.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.UserName , model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("Index","Student");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -94,7 +94,7 @@ namespace StudentManagement.Controllers
         public ActionResult SignUp()
         {
             RegisterViewModel model = new RegisterViewModel();
-            return View("loginSignUp",model);
+            return View("SignUp",model);
         }
         
         //
@@ -102,19 +102,20 @@ namespace StudentManagement.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> SignUp(RegisterViewModel model)
+        public async Task<ActionResult> SignUp(RegisterViewModel receivedUserData)
         {
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser 
                 {
-                    UserName = model.Name,
-                    Email = model.Email
+                    UserName = receivedUserData.Name,
+                    Email = receivedUserData.Email
                 };
                 ApplicationUserManager UserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); 
-                var result = await UserManager.CreateAsync(user, model.Password);
+                IdentityResult result = await UserManager.CreateAsync(user, receivedUserData.Password);
                 if (result.Succeeded)
                 {
+                    var SignInManager = HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
@@ -122,14 +123,14 @@ namespace StudentManagement.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
+                    
                     return RedirectToAction("Login", "Account");
                 }
                 AddErrors(result);
             }
 
             // If we got this far, something failed, redisplay form
-            return View("loginSignUp",model);
+            return View("SignUp", receivedUserData);
         }
 
         //
