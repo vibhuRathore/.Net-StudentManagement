@@ -95,7 +95,7 @@ function bindDatatable() {
             { "data": "StudentSubject" },
             {
                 "mRender": function (data, type, row) {
-                    return '<button class="btn btn-dark Update-btn" onclick="UpdateStudent(' + row.StudentId + ', \'' + row.StudentName + '\' , \'' + row.StudentAge + ' \', \'' + row.StudentSubject + '\');">' + "Update" + '</button>' + ' ' + '<button class="btn btn-dark Remove-btn" onclick="refreshList(' + row.StudentId + ');">' + "Remove" + '</button>'
+                    return '<button class="btn btn-dark Update-btn" id="actionBtns" onclick="UpdateStudent(' + row.StudentId + ', \'' + row.StudentName + '\' , \'' + row.StudentAge + ' \', \'' + row.StudentSubject + '\');">' + "Update" + '</button>' + ' ' + '<button class="btn btn-dark Remove-btn" id="actionBtns" onclick="refreshList(' + row.StudentId + ');">' + "Remove" + '</button>'
                 }
             }
         ]

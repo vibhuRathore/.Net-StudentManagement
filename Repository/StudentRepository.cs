@@ -51,9 +51,8 @@ namespace StudentManagement.Repository
                 {
                     StudentId = student.StudentId,
                     StudentName = student.StudentName,
-                    StudentSubject = student.StudentSubject,
+                    StudentSubject = GetSubject(student.StudentSubject),
                     StudentAge = (int)student.StudentAge,
-                    SubjectList = Subjectlist()
                 };
                 data.Add(model);
             }
@@ -73,6 +72,17 @@ namespace StudentManagement.Repository
         public void Update(StudentDataModel recievedstudentData)
         {
             throw new NotImplementedException();
+        }
+
+        public string GetSubject(string subjectId)
+        {
+            if (subjectId == "1")
+                return "Maths";
+            else if (subjectId == "2")
+                return "Bio";
+            else if (subjectId == "3")
+                return "Chemistry";
+            return null;
         }
     }
 }

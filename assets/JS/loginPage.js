@@ -25,7 +25,7 @@ function SubmitDataToPostLogin()
 {
     debugger
     var receivedUserData = {
-        Email: $("#loginEmail").val(),
+        UserName: $("#loginUserName").val(),
         Password: $("#loginPassword").val()
     };
     debugger

@@ -182,3 +182,7 @@ html, #homeBody {
     background-color: rgb(231, 231, 231);
     border-radius: 20px;
 }
+
+#actionBtns{
+    display:inline-block;
+}
