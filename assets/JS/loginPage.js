@@ -41,3 +41,16 @@ function SubmitDataToPostLogin()
         }
     });
 }
+function ViewForgot() {
+    debugger
+    $.ajax({
+        type: "GET",
+        datatype: "html",
+        success: function (result) {
+            window.location.href = '/Account/ForgotPassword'
+        },
+        error: function (error) {
+            console.error("Error:", error);
+        }
+    });
+}

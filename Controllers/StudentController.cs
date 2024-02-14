@@ -21,7 +21,7 @@ namespace StudentManagement.Controllers
         {
             _studentRepository = new StudentRepository();
         }
- 
+        [Authorize]
         public ActionResult Index()
         {
             if (User.Identity.IsAuthenticated)

@@ -25,14 +25,14 @@
                     <h3 class="heading subHeadlogin">Login</h3>
                     @Html.TextBoxFor(SignUp => Model.UserName, new { placeholder = "Your Username", @id = "loginUserName", @class = "name ele" })
                     @Html.PasswordFor(SignUp => Model.Password, new { placeholder = "password", @id = "loginPassword", @class = "password ele" })
-                <div>
+                <div id="remberMeWrapper">
                     @Html.LabelFor(SignUp => Model.RememberMe, new { @id = "LoginRemberLabel" })
                     @Html.CheckBoxFor(SignUp => Model.RememberMe, new { @id = "LoginRemberCheckbox" })
                 </div>
-                    <div>
-                        Need help ? <a>Forget Password</a>
+                    <div id="forgotWrapper">
+                        Need help ? <button class="" id="forgetBtn" onclick="ViewForgot()">ForgotPassword</button>
                     </div>
-                    <button class="clkbtn" onclick="SubmitDataToPostLogin()">Login</button>
+                    <button class="clkbtn" onclick="SubmitDataToPostLogin()" >Login</button>
                 </div>
             }
         </div>

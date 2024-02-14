@@ -182,14 +182,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ForgotPasswordModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
+    <Compile Include="Models\ResetPassword.cs" />
     <Compile Include="Models\StudentDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IStudent.cs" />
     <Compile Include="Repository\StudentRepository.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utility\SendEmail.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\loginPage.css" />
@@ -277,6 +280,9 @@
     <Content Include="Views\Account\SignUp.cshtml" />
     <Content Include="Views\Account\login.cshtml" />
     <Content Include="Views\Shared\_AccountPartial.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
