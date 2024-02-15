@@ -16,18 +16,20 @@ html, body {
 /*Stylying for Navbar*/
 
 .navbar {
-    /* background-image: linear-gradient(to right, rgb(255, 195, 110), rgb(255, 146, 91));*/
+     background-image: linear-gradient(to right, rgb(255, 195, 110), rgb(255, 146, 91));
+     color:black;
 }
 
 .nav-link {
     margin-left: 2rem;
-    color: white;
+    color: black;
+    font-weight:500;
 }
 
 #logo {
     text-decoration: none;
     font-size: 1.5rem;
-    color: white;
+    color: black;
     font-weight: 600;
 }
 
@@ -59,6 +61,7 @@ html, #homeBody {
 
 #homeHeading {
     text-decoration: underline;
+    color:green;
 }
 
 .subHeading {
@@ -103,8 +106,7 @@ html, #homeBody {
     height: 65px;
     width: 200px;
     border-radius: 50px;
-    /*background-image: linear-gradient(to right, rgb(255, 195, 110), rgb(255, 146, 91));*/
-    color: white;
+    background-image: linear-gradient(to right, rgb(255, 195, 110), rgb(255, 146, 91));
     background-color: #212529;
     font-size: 22px;
     border: none;
@@ -113,7 +115,7 @@ html, #homeBody {
 /* Stylying for AddStudent*/
 .addPartial {
     margin: 2.5rem 0 0 3rem;
-    width: 500px;
+    width: 90%;
     background-color: white;
     box-shadow: 8px 8px 20px rgb(128, 128, 128);
     position: relative;
@@ -124,6 +126,8 @@ html, #homeBody {
     margin: 2rem 0 1rem 2rem;
     font-size: 1.5rem;
     font-weight: 500;
+    color:green;
+    text-decoration:underline;
 }
 
 #AddForm {
@@ -132,10 +136,14 @@ html, #homeBody {
 
 .addFormLabel {
     font-weight: 500;
+    display: block;
+    margin: 1px 0 4px 25px;
 }
 
+
 #StdName, #StdAge, #StudentSubject {
-    min-width: 90%;
+    max-width: 90%;
+    min-width:50%;
     height: 60px;
     outline: none;
     border: none;
@@ -150,7 +158,8 @@ html, #homeBody {
     height: 60px;
     width: 150px;
     border-radius: 50px;
-    /*background-image: linear-gradient(to right, rgb(255, 195, 110), rgb(255, 146, 91));*/
+    background-image: linear-gradient(to right, rgb(255, 195, 110), rgb(255, 146, 91));
+    color:black;
     font-size: 22px;
     border: none;
     cursor: pointer;
@@ -170,6 +179,8 @@ html, #homeBody {
     text-align: center;
     font-size: 1.5rem;
     font-weight: 500;
+    color: green;
+    text-decoration: underline;
 }
 
 #tableWrapper {
@@ -179,10 +190,18 @@ html, #homeBody {
     outline: none;
     border: none;
     color: rgb(77, 77, 77);
-    background-color: rgb(231, 231, 231);
     border-radius: 20px;
 }
 
-#actionBtns{
-    display:inline-block;
+#actionBtns {
+    display: inline-block;
+    margin-right: 4px;
+    background-image: linear-gradient(to right, rgb(255, 195, 110), rgb(255, 146, 91));
+    color:black;
+    margin-bottom:4px;
+}
+
+#footer {
+    display: flex;
+    justify-content: center;
 }

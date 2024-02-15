@@ -26,23 +26,34 @@
             @using (Html.BeginForm("SignUp", "Account", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
-                <div class="signup-box">
-                    <h3 class="heading subHeadlogin">SignUp</h3>
+            <div class="signup-box">
+                <h3 class="heading subHeadlogin">SignUp</h3>
+                <div>
+                    <span class="signUpValidations"> @Html.ValidationMessageFor(SignUp => Model.Name)</span>
                     @Html.TextBoxFor(SignUp => Model.Name, new { placeholder = "Your Name", @id = "signUpName", @class = "name ele" })
-                    @*@Html.ValidationMessageFor(student => Model.StudentName)*@
-
-                    @Html.TextBoxFor(SignUp => Model.Email, new { placeholder = "youremail@email.com", @id = "signUpEmail", @class = "email ele" })
-
-                    @Html.PasswordFor(SignUp => Model.Password, new { placeholder = "password", @id = "signUpPassword", @class = "password ele" })
-
-                    @Html.PasswordFor(SignUp => Model.ConfirmPassword, new { placeholder = "Confirm password", @id = "signUpConfirmPassword", @class = "password ele" })
-                    <button class="clkbtn" onclick="SubmitDataToPostSignUp()">SignUp</button>
                 </div>
+                <div>
+                    <span class="signUpValidations"> @Html.ValidationMessageFor(SignUp => Model.Email) </span>
+                    @Html.TextBoxFor(SignUp => Model.Email, new { placeholder = "youremail@email.com", @id = "signUpEmail", @class = "email ele" })
+                </div>
+                <div>
+                    <span class="signUpValidations"> @Html.ValidationMessageFor(SignUp => Model.Password) </span>
+                    @Html.PasswordFor(SignUp => Model.Password, new { placeholder = "password", @id = "signUpPassword", @class = "password ele" })
+                </div>
+                <div>
+                    <span class="signUpValidations">@Html.ValidationMessageFor(SignUp => Model.ConfirmPassword)</span>
+                    @Html.PasswordFor(SignUp => Model.ConfirmPassword, new { placeholder = "Confirm password", @id = "signUpConfirmPassword", @class = "password ele" })
+                </div>
+                <button class="clkbtn" onclick="SubmitDataToPostSignUp()">SignUp</button>
+            </div>
             }
 
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="~/assets/JS/loginPage.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/ej/ej.unobtrusive.min.js"></script>
 </body>
 </html>

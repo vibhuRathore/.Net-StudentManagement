@@ -111,6 +111,22 @@ namespace StudentManagement.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> SignUp(RegisterViewModel receivedUserData)
         {
+            if (string.IsNullOrEmpty(receivedUserData.Name))
+            {
+                ModelState.AddModelError("UserName", "User  Name is Required");
+            }
+            else if(string.IsNullOrEmpty(receivedUserData.Email))
+            {
+                ModelState.AddModelError("Email", "Email is Required");
+            }
+            else if (string.IsNullOrEmpty(receivedUserData.Password))
+            {
+                ModelState.AddModelError("Password", "Password is Required");
+            }
+            else if (string.IsNullOrEmpty(receivedUserData.ConfirmPassword))
+            {
+                ModelState.AddModelError("ConfirmPassword", "Confirm Password is Required");
+            }
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser
@@ -124,12 +140,6 @@ namespace StudentManagement.Controllers
                 {
                     var SignInManager = HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     return RedirectToAction("Login", "Account");
                 }

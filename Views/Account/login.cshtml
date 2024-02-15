@@ -20,24 +20,34 @@
         <div class="form-section">
             @using (Html.BeginForm("login", "Account", FormMethod.Post))
             {
+                @Html.ValidationSummary(true)
                 @Html.AntiForgeryToken()
-                <div class="login-box">
-                    <h3 class="heading subHeadlogin">Login</h3>
-                    @Html.TextBoxFor(SignUp => Model.UserName, new { placeholder = "Your Username", @id = "loginUserName", @class = "name ele" })
-                    @Html.PasswordFor(SignUp => Model.Password, new { placeholder = "password", @id = "loginPassword", @class = "password ele" })
-                <div id="remberMeWrapper">
+            <div class="login-box">
+                <h3 class="heading subHeadlogin">Login</h3>
+                <div>
+                    <span class="loginValidations"> @Html.ValidationMessageFor(SignUp => Model.UserName) </span>
+                    @Html.TextBoxFor(SignUp => Model.UserName, new { autocomplete="off", onfocus = "clearInput(this)", placeholder = "Your Username", @id = "loginUserName", @class = "name ele"})
+                </div>
+                <div>
+                    <span class="loginValidations">@Html.ValidationMessageFor(SignUp => Model.Password) </span>
+                        @Html.PasswordFor(SignUp => Model.Password, new { placeholder = "password", @id = "loginPassword", @class = "password ele"})
+                </div>
+                <div id="remberMeWrapper">  
                     @Html.LabelFor(SignUp => Model.RememberMe, new { @id = "LoginRemberLabel" })
                     @Html.CheckBoxFor(SignUp => Model.RememberMe, new { @id = "LoginRemberCheckbox" })
                 </div>
-                    <div id="forgotWrapper">
-                        Need help ? <button class="" id="forgetBtn" onclick="ViewForgot()">ForgotPassword</button>
-                    </div>
-                    <button class="clkbtn" onclick="SubmitDataToPostLogin()" >Login</button>
+                <div id="forgotWrapper">
+                    Need help ? <button class="" id="forgetBtn" onclick="ViewForgot()">ForgotPassword</button>
                 </div>
+                <button class="clkbtn" onclick="SubmitDataToPostLogin()">Login</button>
+            </div>
             }
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="~/assets/JS/loginPage.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/ej/ej.unobtrusive.min.js"></script>
 </body>
 </html>

@@ -54,3 +54,8 @@ function ViewForgot() {
         }
     });
 }
+//function clearInput(input) {
+//    setTimeout(() => {
+//        input.value = '';
+//    }, 100);
+//}

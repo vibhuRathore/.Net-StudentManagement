@@ -11,15 +11,15 @@
     @Html.ValidationSummary()*@
     <span class="addFormLabel"> @Html.HiddenFor(student => Model.StudentId, new { Id = "StdId" }) </span>
 
-    <span class="addFormLabel">Student Name : </span> @Html.TextBoxFor(student => Model.StudentName, new { placeholder="Your Name", Id = "StdName" })
+    <span class="addFormLabel">Student Name : </span> @Html.TextBoxFor(student => Model.StudentName, new { placeholder="Your Name", Id = "StdName" , @class="addStudentLabel"})
     @*@Html.ValidationMessageFor(student => Model.StudentName)*@
     <br />
     <br />
-    <span class="addFormLabel">Student Age: </span> @Html.TextBoxFor(student => Model.StudentAge, new { placeholder = "Your Age", Id = "StdAge" })
+    <span class="addFormLabel">Student Age: </span> @Html.TextBoxFor(student => Model.StudentAge, new { placeholder = "Your Age", Id = "StdAge" , @class = "addStudentLabel" })
     @*@Html.ValidationMessageFor(student => Model.StudentAge)*@
     <br />
     <br />
-    <span class="addFormLabel">Student Subject : </span> @Html.DropDownListFor(student => Model.StudentSubject, ViewBag.List as List<SelectListItem>, new { Id = "StudentSubject" })
+    <span class="addFormLabel">Student Subject : </span> @Html.DropDownListFor(student => Model.StudentSubject, ViewBag.List as List<SelectListItem>, new { Id = "StudentSubject" , @class = "addStudentLabel" })
     @*@Html.ValidationMessageFor(student => Model.StudentSubject)*@
     <br />
     <br />
